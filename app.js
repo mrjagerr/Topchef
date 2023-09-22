@@ -241,16 +241,17 @@ function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
     alert('Sending final message to all 389 customers...')
    
     dishOfTheDay = todaysSpecialDish
-    switch(messageTypeCallback) {
+    // switch(messageTypeCallback) {
 
-    
-    case "textmessage":
-        console.log(textMessage(dishOfTheDay))
-        break
-    case "emailmessage":
-        console.log(emailMessage(dishOfTheDay))
-        break
-    }    
+    console.log (messageTypeCallback(dishOfTheDay))
+
+    // case "textmessage":
+    //     console.log(textMessage(dishOfTheDay))
+    //     break
+    // case "emailmessage":
+    //     console.log(emailMessage(dishOfTheDay))
+    //     break
+    // }    
    
    
     
@@ -306,15 +307,15 @@ function runApp(allDishes, specialDish) {
             console.log(concatenatedDishes)
             break
         case "6":
-            let messageTypeCallback = "textmessage"
-            generateMarketingMessage(todaysSpecialDish,messageTypeCallback)
+            
+            generateMarketingMessage(todaysSpecialDish,textMessage)
            
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             break
         case "7":
-            let emailMessageCallback = "emailmessage"
-           generateMarketingMessage(todaysSpecialDish,emailMessageCallback)
+            
+           generateMarketingMessage(todaysSpecialDish,emailMessage)
           
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!

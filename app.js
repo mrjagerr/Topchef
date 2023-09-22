@@ -158,7 +158,7 @@ function findItalianFood(allDishes) {
 
 function searchCuisines(allDishes) {
     alert("Searching for dishes by cuisine...")
-    let userInput = prompt("Please pick a cuisine to search by: ");
+    let userInput = customPrompt(`Please pick a type of cuisine to search by, the choices are  Italian, Mexican, French, Irish, Vegetarian, Hungarian.`,["Italian","Mexican","French","Irish","Vegetarian","Hungarian"]);
     let results = allDishes.filter(function (el) {
         if (el.cuisine.includes(userInput)) {
             return true;
@@ -174,7 +174,7 @@ function searchCuisines(allDishes) {
 
 function searchIngredients(allDishes) {
     alert("Searching for dishes by ingredient...")
-    let userInput = prompt("Please pick an ingredient to search by: ");
+    let userInput = customPrompt(`Please pick an ingredient to search by, the choices are beef, tomato, cheese, corn, flour, sugar, cabbage, chickpea, parsley.`,["beef","tomato","cheese","corn","flour","sugar","cabbage","chickpea","parsley"]);
     let results = allDishes.filter(function (el) {
         if (el.ingredients.includes(userInput)) {
             return true;
@@ -201,34 +201,27 @@ function generateCuisineDishName(allDishes) {
 
 function emailMessage(dishOfTheDay) {
     // TODO #6: Adjust the message below so the cuisine and name of the dish are displayed
-    let message = `
-    Hello valued customer!
-
+    
+    
+    let message =           `Hello valued customer! 
     Thank you for subscribing to email alert messages!
-    Today's Dish of the day is:
-
-    <DISH OF THE DAY HERE>
-
-    We hope to see you in soon!
-
-    Kindly,
-    Master Chef David
-
-    (To unsubscribe hit the 'unsubscribe' button below)
-    `;
-
+    Today's Dish of the day is: ${dishOfTheDay.cuisine} ${dishOfTheDay.name} 
+    We hope to see you in soon!Kindly,Master Chef David
+    
+    (To unsubscribe hit the 'unsubscribe' button below)`;
     return message;
 }
 
 function textMessage(dishOfTheDay) {
     // TODO #6: Adjust the message below so the cuisine and name of the dish are displayed
-    let message = `
+    
+    let message =`
     Master Chef -
 
     This is an automated text message alert.
     Today's Dish of the day is:
 
-    <DISH OF THE DAY HERE>
+    ${dishOfTheDay.cuisine} ${dishOfTheDay.name}
 
     We hope to see you in soon!
 
@@ -237,15 +230,35 @@ function textMessage(dishOfTheDay) {
 
     Text STOP to stop all future messages.
     
-    `;
-    return message;
+ `;
+
+    
+    return message
+
 }
 
 function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
     alert('Sending final message to all 389 customers...')
+   
+    dishOfTheDay = todaysSpecialDish
+    switch(messageTypeCallback) {
+
+    
+    case "textmessage":
+        console.log(textMessage(dishOfTheDay))
+        break
+    case "emailmessage":
+        console.log(emailMessage(dishOfTheDay))
+        break
+    }    
+   
+   
+    
+
     // TODO #7: Call the passed-in callback function on the dishOfTheDay.  Save the result as a variable
     // Then, log that result to the console
     alert('Success!  Check the console for a copy of the final marketing message!')
+   
 }
 
 // <<<<<<<<<<<<<<<<< CUSTOM PROMPT FUNCTION <<<<<<<<<<<<<<<<<
@@ -293,10 +306,16 @@ function runApp(allDishes, specialDish) {
             console.log(concatenatedDishes)
             break
         case "6":
+            let messageTypeCallback = "textmessage"
+            generateMarketingMessage(todaysSpecialDish,messageTypeCallback)
+           
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             break
         case "7":
+            let emailMessageCallback = "emailmessage"
+           generateMarketingMessage(todaysSpecialDish,emailMessageCallback)
+          
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             break

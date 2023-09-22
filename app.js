@@ -158,7 +158,7 @@ function findItalianFood(allDishes) {
 
 function searchCuisines(allDishes) {
     alert("Searching for dishes by cuisine...")
-    let userInput = customPrompt(`Please pick a type of cuisine to search by, the choices are  Italian, Mexican, French, Irish, Vegetarian, Hungarian.`,["Italian","Mexican","French","Irish","Vegetarian","Hungarian"]);
+    let userInput = customPrompt(`Please pick a type of cuisine to search by, the choices are :  Italian, Mexican, French, Irish, Vegetarian, Hungarian.`,["Italian","Mexican","French","Irish","Vegetarian","Hungarian"]);
     let results = allDishes.filter(function (el) {
         if (el.cuisine.includes(userInput)) {
             return true;
@@ -174,7 +174,7 @@ function searchCuisines(allDishes) {
 
 function searchIngredients(allDishes) {
     alert("Searching for dishes by ingredient...")
-    let userInput = customPrompt(`Please pick an ingredient to search by, the choices are beef, tomato, cheese, corn, flour, sugar, cabbage, chickpea, parsley.`,["beef","tomato","cheese","corn","flour","sugar","cabbage","chickpea","parsley"]);
+    let userInput = customPrompt(`Please pick an ingredient to search by, the choices are : beef, tomato, cheese, corn, flour, sugar, cabbage, chickpea, parsley.`,["beef","tomato","cheese","corn","flour","sugar","cabbage","chickpea","parsley"]);
     let results = allDishes.filter(function (el) {
         if (el.ingredients.includes(userInput)) {
             return true;

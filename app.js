@@ -142,7 +142,8 @@ function findMexicanFood(allDishes) {
 // <<<<<<<<<<<<<<<<< MAP & FILTER FUNCTIONS <<<<<<<<<<<<<<<<<
 
 function findItalianFood(allDishes) {
-    alert("Searching for Italian dishes...")
+    alert("Searching for Italian dishes...") 
+    
     let results = allDishes.filter(function (el) {
         if (el.cuisine === "Italian") {
             return true;
@@ -188,8 +189,12 @@ function searchIngredients(allDishes) {
 
 function generateCuisineDishName(allDishes) {
     alert("Combining cuisine and dish names...")
+    let cuisineDishName = allDishes.map(function(el){
+      return el.cuisine +" "+ el.name 
+    })
     // TODO #5: Apply the concatenatorFunction to each dish in allDishes, then log to the console the modified result
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
+    return cuisineDishName
 }
 
 // <<<<<<<<<<<<<<<<< EMAIL AND TEXT MARKETING MESSAGES <<<<<<<<<<<<<<<<<
